@@ -1,0 +1,131 @@
+.user-details{
+    display: flex;
+    background-color: #1E262F;
+    border-radius: 1rem;
+    margin: 1cm;
+    padding: 0.2cm;
+    color: aliceblue;
+    font-size: 20px;
+}
+
+.fun{
+    margin-left: 4rem;
+}
+
+.fun-userName{
+    margin-left: 1rem;
+}
+
+.fun-walk{
+    margin-left: 3.5rem;
+}
+
+.fun_user_cal_target{
+    margin-left: 1.3rem;
+}
+
+.fun-date{
+    margin-left: 5.5rem;
+}
+
+.fun-cal{
+    margin-left: 5.5rem;
+}
+
+.fun-cal-target{
+    margin-left: 1.3rem;
+}
+
+.fun-bell-icon{
+    margin-top: 3.8rem;
+    margin-bottom: 4.8rem;
+    margin-left: 2rem;
+    padding: 1.3rem;
+    background-color: #36F5C7;
+    border-radius: 1rem;
+}
+
+.mid{
+    padding: 35px 0;
+}
+
+.mid_date{
+    padding: 60px 0;
+}
+
+.mid_cal_target{
+    padding: 80px 0;
+}
+
+.walk-dia-edit{
+    padding-top: 55px;
+}
+
+.cal_dia{
+    padding-top: 50px;
+}
+
+.user_image{
+    border-radius: 100%;
+    height: 60px;
+    width: 60px;
+    padding: 80px 0;
+}
+
+.user_name{
+    padding: 85px 0;
+}
+
+
+.userName{
+    font-weight: 600;
+}
+
+.target_{
+    font-weight: 1000;
+    font-size: 30px;
+}
+
+.start-date{
+    margin-bottom: 1rem;
+    display: flex;
+}
+.start-icon{
+    margin-right: 10px;
+}
+
+.start-text{
+    margin-top: 7px;
+}
+
+.end-icon{
+    margin-right: 10px;
+}
+
+.end_date{
+    display: flex;
+}
+.end-text{
+    margin-top: 3px;
+}
+
+.arrow_{
+    padding-top: 5.2rem;
+    background-color: #101317;
+    padding-left:0.5rem;
+    padding-right: 0.5rem;
+    margin: 1rem;
+    border-radius: .5rem;
+}
+
+.add-icon{
+    background-color: #101317;
+    border-radius: .5rem;
+    margin-bottom: 1rem;
+}
+
+.remove-icon{
+    background-color: #101317;
+    border-radius: .5rem;
+    margin-top: 1rem;
+}
