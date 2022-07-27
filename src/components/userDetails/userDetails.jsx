@@ -6,39 +6,26 @@ import "./userDetails.css";
 import Header from "../header/header";
 import EditHeader from "../editHeader/editHeader";
 
-export default function Users({bool}) {
+export default function Users({ bool }) {
   const data = Data;
-  if(bool){
+  if (bool) {
     return (
       <div>
-      <Header/>
-        {
-          Data.map((value) =>{
-            return(<User
-              data = {value}
-            />)
-          })
-        }
+        <Header />
+        {Data.map((value) => {
+          return <User data={value} />;
+        })}
         {console.log(Data)}
       </div>
-    )
-  }
-
-  else{
+    );
+  } else {
     return (
       <div>
-      <EditHeader/>
-        {
-          Data.map((value) =>{
-            return(<EditCard
-              data = {value}
-            />)
-          })
-        }
+        <EditHeader />
+        {Data.map((value) => {
+          return <EditCard data={value} />;
+        })}
       </div>
-    )
+    );
   }
- 
-
-  
 }

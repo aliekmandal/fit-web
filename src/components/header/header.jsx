@@ -26,7 +26,7 @@ export default function Header() {
       <a className="edit" href="/editUser">
         <div className="edit">
           <h2 className="edit-icon header-title">
-            <ModeEditOutlineIcon style = {{color : "white"}} fontSize="large" />
+            <ModeEditOutlineIcon style={{ color: "white" }} fontSize="large" />
           </h2>
         </div>
       </a>
