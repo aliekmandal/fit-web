@@ -8,26 +8,31 @@ import TodayIcon from "@mui/icons-material/Today";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import Data from "../../data/data.json"
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import Data from "../../data/data.json";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import { styled } from "@mui/material/styles";
 
-// function kFormatter(num) {
-//   return Math.abs(num) > 999
-//     ? Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + "k"
-//     : Math.sign(num) * Math.abs(num);
-// }
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+import ProgressBar from "../progressBar/progressBar";
+
+const HtmlTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: "#333B44",
+    color: "rgba(0, 0, 0, 0.87)",
+    maxWidth: 1000,
+    fontSize: theme.typography.pxToRem(12),
+  },
+}));
 
 export default function EditCard({ data }) {
   const [walk, setWalk] = useState(data.stepsTarget);
-  const [cal , setCal] = useState(data.calorieTarget);
+  const [cal, setCal] = useState(data.calorieTarget);
 
   return (
     <div className="user-details">
-      <img
-        className="user_image fun"
-        src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"
-        alt=""
-      />
+      <img className="user_image fun" src={data.img} alt="" />
 
       <div className="fun-userName user_name">
         <text className="userName">{data.name} </text>
@@ -35,7 +40,10 @@ export default function EditCard({ data }) {
         <text className="userMail">{data.mail} </text>
       </div>
 
-      <div style={{ width: 100, height: 110 }} className="fun-walk walk-dia-edit">
+      <div
+        style={{ width: 100, height: 110 }}
+        className="fun-walk walk-dia-edit"
+      >
         <CircularProgressbar
           value={data.stepsWalked}
           maxValue={data.stepsTarget}
@@ -81,23 +89,60 @@ export default function EditCard({ data }) {
 
       <a href={`${data.userid}/workout`} className="arrow_">
         <div>
-          <ArrowForwardIosIcon style={{color : "white"}}/>
+          <ArrowForwardIosIcon style={{ color: "white" }} />
         </div>
       </a>
+      <HtmlTooltip
+        title={
+          <React.Fragment>
+            <div className="div-hover">
+              <div className="div-title">
+                <h3 className="title-hover">PROTIEN</h3>
+                <h3 className="cal-details">{data.proteinTarget}g</h3>
+              </div>
 
-      <div className="fun-cal cal_dia" style={{ width: 100, height: 110 }}>
-        <PieChart
-          lineWidth={30}
-          animate={true}
-          paddingAngle={25}
-          rounded={true}
-          data={[
-            { title: "Protein", value: data.proteinConsumed, color: "#F5C90F" },
-            { title: "Calorie", value: data.carbConsumed, color: "#03C7FC" },
-            { title: "Fat", value: data.fatConsumed, color: "#F45C84" },
-          ]}
-        />
-      </div>
+              <ProgressBar
+                bgcolor={"#03C6FA"}
+                completed={data.proteinConsumed}
+              />
+            </div>
+            <div className="div-hover">
+              <div className="div-title">
+                <h3 className="title-hover">FATS</h3>
+                <h3 className="cal-details">{data.fatTarget}g</h3>
+              </div>
+
+              <ProgressBar bgcolor={"#F0C50F"} completed={data.fatConsumed} />
+            </div>
+            <div className="div-hover">
+              <div className="div-title">
+                <h3 className="title-hover">CARBS</h3>
+                <h3 className="cal-details">{data.carbTarget}g</h3>
+              </div>
+
+              <ProgressBar bgcolor={"#F45C84"} completed={data.carbConsumed} />
+            </div>
+          </React.Fragment>
+        }
+      >
+        <div className="fun-cal cal_dia" style={{ width: 100, height: 110 }}>
+          <PieChart
+            lineWidth={30}
+            animate={true}
+            paddingAngle={25}
+            rounded={true}
+            data={[
+              {
+                title: "Protein",
+                value: data.proteinConsumed,
+                color: "#03C6FA",
+              },
+              { title: "Calorie", value: data.carbConsumed, color: "#F45C84" },
+              { title: "Fat", value: data.fatConsumed, color: "#F0C50F" },
+            ]}
+          />
+        </div>
+      </HtmlTooltip>
 
       <div className="user_distance_target fun_user_cal_target mid">
         <div
@@ -124,12 +169,12 @@ export default function EditCard({ data }) {
       </div>
       <a href={`${data.userid}/nutrtion`} className="arrow_">
         <div>
-          <ArrowForwardIosIcon style={{color : "white"}}/>
+          <ArrowForwardIosIcon style={{ color: "white" }} />
         </div>
       </a>
 
       <div className="fun-bell-icon">
-          <NotificationsNoneIcon style={{color : "black"}} fontSize="large"/>
+        <NotificationsNoneIcon style={{ color: "black" }} fontSize="large" />
       </div>
     </div>
   );

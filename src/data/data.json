@@ -33,7 +33,7 @@
         "proteinTarget" : 70,
         "carbConsumed" : 50,
         "carbTarget" : 70,
-        "fatConsumed" : 56,
+        "fatConsumed" : 62,
         "fatTarget" : 70
     },
 
@@ -52,7 +52,7 @@
         "proteinTarget" : 70,
         "carbConsumed" : 30,
         "carbTarget" : 70,
-        "fatConsumed" : 56,
+        "fatConsumed" : 45,
         "fatTarget" : 70
     }
 ]

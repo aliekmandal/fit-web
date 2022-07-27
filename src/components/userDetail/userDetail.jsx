@@ -7,6 +7,20 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import TodayIcon from "@mui/icons-material/Today";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import ProgressBar from "../progressBar/progressBar";
+import { styled } from "@mui/material/styles";
+
+import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
+const HtmlTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: "#333B44",
+    color: "rgba(0, 0, 0, 0.87)",
+    maxWidth: 1000,
+    fontSize: theme.typography.pxToRem(12),
+  },
+}));
 
 function kFormatter(num) {
   return Math.abs(num) > 999
@@ -15,14 +29,9 @@ function kFormatter(num) {
 }
 
 export default function User({ data }) {
-
   return (
     <div className="user-details">
-      <img
-        className="user-image "
-        src={data.img}
-        alt=""
-      />
+      <img className="user-image " src={data.img} alt="" />
 
       <div className="fun_user_name user-name">
         <text className="userName">{data.name} </text>
@@ -55,34 +64,75 @@ export default function User({ data }) {
           <div className="end-text">20 Oct</div>
         </div>
       </div>
-      <a href={`${data.userid}/workout`} className="arrow">
+      <a href={`/${data.userid}/workout`} className="arrow">
         <div>
-          <ArrowForwardIosIcon style={{color : "white"}}/>
+          <ArrowForwardIosIcon style={{ color: "white" }} />
         </div>
       </a>
 
-      <div className="fun_user_cal cal-dia" style={{ width: 100, height: 110 }}>
-        <PieChart
-          lineWidth={30}
-          animate={true}
-          paddingAngle={25}
-          rounded={true}
-          data={[
-            { title: "Protein", value: data.proteinConsumed, color: "#F5C90F" },
-            { title: "Calorie", value: data.carbConsumed, color: "#03C7FC" },
-            { title: "Fat", value: data.fatConsumed, color: "#F45C84" },
-          ]}
-        />
-      </div>
+      <HtmlTooltip
+        title={
+          <React.Fragment>
+            <div className="div-hover">
+              <div className="div-title">
+                <h3 className="title-hover">PROTIEN</h3>
+                <h3 className="cal-details">{data.proteinTarget}g</h3>
+              </div>
+
+              <ProgressBar
+                bgcolor={"#03C6FA"}
+                completed={data.proteinConsumed}
+              />
+            </div>
+            <div className="div-hover">
+              <div className="div-title">
+                <h3 className="title-hover">FATS</h3>
+                <h3 className="cal-details">{data.fatTarget}g</h3>
+              </div>
+
+              <ProgressBar bgcolor={"#F0C50F"} completed={data.fatConsumed} />
+            </div>
+            <div className="div-hover">
+              <div className="div-title">
+                <h3 className="title-hover">CARBS</h3>
+                <h3 className="cal-details">{data.carbTarget}g</h3>
+              </div>
+
+              <ProgressBar bgcolor={"#F45C84"} completed={data.carbConsumed} />
+            </div>
+          </React.Fragment>
+        }
+      >
+        <div
+          className="fun_user_cal cal-dia"
+          style={{ width: 100, height: 110 }}
+        >
+          <PieChart
+            lineWidth={30}
+            animate={true}
+            paddingAngle={25}
+            rounded={true}
+            data={[
+              {
+                title: "Protein",
+                value: data.proteinConsumed,
+                color: "#03C6FA",
+              },
+              { title: "Calorie", value: data.carbConsumed, color: "#F45C84" },
+              { title: "Fat", value: data.fatConsumed, color: "#F0C50F" },
+            ]}
+          />
+        </div>
+      </HtmlTooltip>
 
       <div className="mid_user_walk_target fun_user_walk_target mid_user">
         <text className="target">{kFormatter(data.calorieTarget)}</text>
         <br />
         target
       </div>
-      <a href={`${data.userid}/nutrtion`} className="arrow">
+      <a href={`/${data.userid}/nutrition`} className="arrow">
         <div>
-          <ArrowForwardIosIcon style={{color : "white"}}/>
+          <ArrowForwardIosIcon style={{ color: "white" }} />
         </div>
       </a>
 

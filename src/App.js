@@ -10,8 +10,8 @@ function App() {
         <Routes>
           <Route exact path = "/" element = {<Users bool={1}/>}/>
           <Route exact path = "/editUser" element = {<Users bool = {0}/>}/>
-          <Route exact path = "/:userId/workout" element = {<Users/>}/>
-          <Route exact path = "/:userId/nutrition" element = {<Users/>}/>
+          <Route exact path = "/:userId/workout" element = {<Users bool={1}/>}/>
+          <Route exact path = "/:userId/nutrition" element = {<Users bool = {1}/>}/>
         </Routes>
       </BrowserRouter>
     </div>
