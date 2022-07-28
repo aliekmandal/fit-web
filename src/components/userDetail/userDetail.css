@@ -101,6 +101,14 @@
 .end-date {
   display: flex;
 }
+
+.end-date-error {
+  display: flex;
+  background-color: #cc3838;
+  padding: 0.3rem;
+  border-radius: 0.4rem;
+}
+
 .end-text {
   margin-top: 3px;
 }
@@ -108,6 +116,15 @@
 .arrow {
   padding-top: 3rem;
   background-color: #101317;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin: 1rem;
+  border-radius: 0.5rem;
+}
+
+.arrow-exc {
+  padding-top: 3rem;
+  background-color: #cc3838;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   margin: 1rem;

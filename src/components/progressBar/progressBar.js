@@ -1,5 +1,3 @@
-import { flexbox } from "@mui/system";
-
 const ProgressBar = (props) => {
   const { bgcolor, completed } = props;
 

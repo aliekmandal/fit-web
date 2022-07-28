@@ -7,7 +7,6 @@ import Header from "../header/header";
 import EditHeader from "../editHeader/editHeader";
 
 export default function Users({ bool }) {
-  const data = Data;
   if (bool) {
     return (
       <div>
@@ -15,7 +14,6 @@ export default function Users({ bool }) {
         {Data.map((value) => {
           return <User data={value} />;
         })}
-        {console.log(Data)}
       </div>
     );
   } else {

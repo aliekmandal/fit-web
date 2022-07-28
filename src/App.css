@@ -1,9 +1,8 @@
 .App {
   text-align: center;
   background-color: #101317;
-  padding:1rem;
+  padding: 1rem;
   margin: 2rem;
   border-radius: 1rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
-

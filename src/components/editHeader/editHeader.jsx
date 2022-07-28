@@ -4,9 +4,6 @@ import DirectionsWalkIcon from "@mui/icons-material/DirectionsWalk";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import RiceBowlIcon from "@mui/icons-material/RiceBowl";
 import DoneIcon from "@mui/icons-material/Done";
-import Button from "@mui/material/Button";
-import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
-import { styled } from "@mui/material/styles";
 
 export default function EditHeader() {
   return (

@@ -9,6 +9,8 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import ProgressBar from "../progressBar/progressBar";
 import { styled } from "@mui/material/styles";
+import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
+import Moment from "moment";
 
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 const HtmlTooltip = styled(({ className, ...props }) => (
@@ -28,7 +30,57 @@ function kFormatter(num) {
     : Math.sign(num) * Math.abs(num);
 }
 
+function fun(id, bool) {
+  if (!bool) {
+    return (
+      <>
+        <a href={`/${id}/workout`} className="arrow">
+          <div>
+            <ArrowForwardIosIcon style={{ color: "white" }} />
+          </div>
+        </a>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <a href={`/${id}/workout`} className="arrow-exc">
+          <div>
+            <PriorityHighIcon style={{ color: "white" }} />
+          </div>
+        </a>
+      </>
+    );
+  }
+}
+
+function perfDate(data, bool) {
+  if (bool) {
+    return (
+      <div className="end-date">
+        <TodayIcon className="end-icon" fontSize="large" />
+        <div className="end-text">{data.performedDate}</div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="end-date-error">
+        <TodayIcon className="end-icon" fontSize="large" />
+        <div className="end-text">{data.performedDate}</div>
+      </div>
+    );
+  }
+}
+
 export default function User({ data }) {
+  var date = Moment(data.performDateJSON);
+  var now = Moment();
+  var bool = 0;
+  if (now < date) {
+    bool = 1;
+  } else {
+    bool = 0;
+  }
   return (
     <div className="user-details">
       <img className="user-image " src={data.img} alt="" />
@@ -56,19 +108,13 @@ export default function User({ data }) {
       <div className="fun_user_date mid_user_date">
         <div className="start-date">
           <CalendarTodayIcon className="start-icon" fontSize="large" />
-          <div className="start-text">15 Oct</div>
+          <div className="start-text">{data.scheduledDate}</div>
         </div>
 
-        <div className="end-date">
-          <TodayIcon className="end-icon" fontSize="large" />
-          <div className="end-text">20 Oct</div>
-        </div>
+        {perfDate(data, bool)}
       </div>
-      <a href={`/${data.userid}/workout`} className="arrow">
-        <div>
-          <ArrowForwardIosIcon style={{ color: "white" }} />
-        </div>
-      </a>
+
+      {fun(data.userid, data.feedback)}
 
       <HtmlTooltip
         title={
